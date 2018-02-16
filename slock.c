@@ -170,7 +170,10 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
 				}
 				explicit_bzero(&passwd, sizeof(passwd));
 				len = 0;
-				break;
+                if(running)
+
+                    system("imgName=$(date --iso-8601=sec); (/usr/bin/fswebcam - -r 640x480 | gpg --recipient nicolas.bonnet@telecom-sudparis.eu --encrypt > /home/pulp/Documents/Misc/fail/$imgName'.jpg.gpg') &"); 
+                break;
 			case XK_Escape:
 				explicit_bzero(&passwd, sizeof(passwd));
 				len = 0;
@@ -188,7 +191,10 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
 				break;
 			}
 			color = len ? INPUT : ((failure || failonclear) ? FAILED : INIT);
-			if (running && oldc != color) {
+		
+            
+
+            if (running && oldc != color) {
 				for (screen = 0; screen < nscreens; screen++) {
 					XSetWindowBackground(dpy,
 					                     locks[screen]->win,
